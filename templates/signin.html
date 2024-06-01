@@ -1,0 +1,43 @@
+{% extends "Home.html" %}
+
+{% block content %}
+<div class=" flex justify-center h-14 py-4 mt-8">
+    <h5 class="text-red-600 text-6xl">Pizza Italian</h5>
+</div>
+<br>
+<div class=" h-screen flex justify-end">
+    <img src="/static/dist/Sign.jpg"  alt="">
+    <div class="bg-white p-8 rounded w-3/5">
+        <h2 class="text-2xl font-semibold mb-6 text-red-500">Sign Up</h2>
+        <form action="/signin" method="post">
+            {% csrf_token %}
+
+            {% if error %}
+            <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative mb-6" role="alert">
+                <strong class="font-bold">{{error}}</strong>
+            </div>
+            {% endif %}
+
+            <div class="mb-4 shadow-2xl">
+                <label for="username" class="block text-red-500 text-sm font-medium mb-2">Username</label>
+                <input type="text" id="username" name="username" class="w-full p-2 border rounded" required>
+            </div>
+            <div class="mb-4 shadow-2xl">
+                <label for="email" class="block text-red-500 text-sm font-medium mb-2">Email</label>
+                <input type="email" id="email" name="email" class="w-full p-2 border rounded" required>
+            </div>
+            <div class="mb-4 shadow-2xl">
+                <label for="Phone" class="block text-red-500 text-sm font-medium mb-2">Phone</label>
+                <input type="Contact" id="Phone" name="Phone" class="w-full p-2 border rounded" required>
+            </div>
+            <div class="mb-4 shadow-2xl">
+                <label for="password" class="block text-red-500 text-sm font-medium mb-2">Password</label>
+                <input type="password" id="password" name="password" class="w-full p-2 border rounded" required>
+            </div>
+            <button type="submit" class="bg-red-500 hover:bg-red-700 text-white py-2 px-4 rounded ">Sign Up</button>
+        </form>
+        <p class="text-gray-600 mt-4">Already have an account? <a href="/login" class="text-red-500">Login</a></p>
+    </div>
+</div>
+
+{% endblock content %}

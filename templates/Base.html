@@ -1,0 +1,92 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pizza Italian</title>
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="/static/Styles.css">
+</head>
+
+<body class="bg-gray-100 scrollbar-hidden overflow-y-scroll">
+    <nav class="bg-red-600 fixed top-0 w-full z-10">
+        <ul class="flex justify-around py-2">
+            <li class="mr-2">
+                <a href="/Home" class="text-red-200 text-lg font-semibold hover:text-white cursor-pointer">Home</a>
+            </li>
+            <li class="mr-2">
+                <a href="/categories" class="text-red-200 text-lg font-semibold hover:text-white cursor-pointer">Categories</a>
+            </li>
+            <li class="mr-2">
+                <a href="/cart" class="text-red-200 text-lg font-semibold hover:text-white cursor-pointer">Cart</a>
+                {% if request.session.cart.keys|length %}
+                <span class="inline-flex items-center justify-center w-4 h-4  text-base font-semibold text-red-500 -mt-4 bg-red-200 rounded-full">
+                    {{request.session.cart.keys|length}}
+                    </span>
+                    {% endif %}
+            </li>
+            {% if request.session.Customer %}
+            <li class="mr-2">
+                <a href="/orders" class="text-red-200 text-lg font-semibold hover:text-white cursor-pointer">Orders</a>
+            </li>
+            <li class="mr-2">
+                <a href="/logout" class="text-red-200 text-lg font-semibold hover:text-white cursor-pointer">Logout</a>
+            </li>
+             {% else %}
+            <li class="mr-2">
+                <a href="/signin" class="text-red-200 text-lg font-semibold hover:text-white cursor-pointer">Sign up</a>
+            </li>
+            <li>
+                <a href="/login" class="text-red-200 text-lg font-semibold hover:text-white cursor-pointer">Log in</a>
+            </li>
+            {% endif %}
+        </ul>
+    </nav>
+
+    <div class="mt-10">
+        <!-- Sidebar -->
+        
+        <aside class="bg-white text-red-500 w-96 flex-shrink-0 fixed shadow-2xl">
+            <div class="p-4">
+                <h1 class="text-4xl font-bold ">Categories</h1>
+            </div>
+            <nav>
+                <ul class="space-y-2 py-4">
+                    <div class="hover:bg-red-500 hover:text-white">   <hr class="border-t-2 border-gray-200">
+                        <li><a href="{% url "pizza" %}" class="block px-4 py-2 text-2xl">Veggie pizza</a></li></div>
+                    
+                    <div class="hover:bg-red-500 hover:text-white">   <hr class="border-t-2 border-gray-200">
+             <li><a href="{% url "nonvegpizza" %}" class="block px-4 py-2 text-2xl">Non-veg pizza</a></li></div>
+             <div class="hover:bg-red-500 hover:text-white">   <hr class="border-t-2 border-gray-200">
+                <li><a href="{% url "cheesepizza" %}" class="block px-4 py-2 text-2xl">Cheese pizza</a></li></div>
+                <div class="hover:bg-red-500 hover:text-white">   <hr class="border-t-2 border-gray-200">
+                    <li><a href="{% url "pepperonipizza" %}" class="block px-4 py-2 text-2xl">Pipperoni pizza</a></li></div>   
+                    <div class="hover:bg-red-500 hover:text-white">   <hr class="border-t-2 border-gray-200">
+                        <li><a href="{% url "margheritapizza" %}" class="block px-4 py-2 text-2xl">Margherita pizza</a></li></div>
+                        <div class="hover:bg-red-500 hover:text-white">   <hr class="border-t-2 border-gray-200">
+                            <li><a href="{% url "supremepizza" %}" class="block px-4 py-2 text-2xl">Supreme pizza</a></li></div>
+                            <div class="">   <hr class="border-t-2 border-gray-200">
+                                <li><a href="{% url "sides" %}" class="block px-4 py-2 text-2xl">Sides & Beverages</a></li></div>
+                </ul>
+                
+            </nav>
+        </aside>
+    
+        {% block content %}
+        <!-- Main Content -->
+       
+          
+            {% endblock content %}
+        </div>
+    </div>  
+    
+            
+               
+               
+           
+       
+     
+    
+   
